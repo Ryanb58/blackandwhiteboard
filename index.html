@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/canvas.css">
   <link rel="stylesheet" href="/styles/toolbar.css">
+  <link rel="stylesheet" href="/styles/modal.css">
+  <link rel="stylesheet" href="/styles/toast.css">
 </head>
 <body>
   <div id="app">
@@ -15,6 +17,7 @@
         <input type="text" id="whiteboard-name" placeholder="Untitled Whiteboard">
       </div>
       <div class="utility-controls">
+        <button id="browse-files-btn" class="toolbar-btn" title="Browse Files">Files</button>
         <button id="undo-btn" class="toolbar-btn" title="Undo">Undo</button>
         <button id="redo-btn" class="toolbar-btn" title="Redo">Redo</button>
         <button id="save-btn" class="toolbar-btn" title="Save">Save</button>
@@ -35,8 +38,14 @@
         <button class="color-btn" data-color="blue"></button>
         <button class="color-btn" data-color="yellow"></button>
       </div>
+      <div class="tool-picker">
+        <button id="eraser-btn" class="tool-btn" title="Eraser">Eraser</button>
+      </div>
     </div>
   </div>
+  
+  <!-- Toast container for notifications -->
+  <div id="toast-container" class="toast-container"></div>
   
   <script type="module" src="/scripts/app.js"></script>
 </body>

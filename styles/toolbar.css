@@ -14,21 +14,30 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+/* Fix for wide screens */
+@media (min-width: 1200px) {
+  .top-toolbar {
+    padding: 0 max(20px, calc((100% - 1200px) / 2));
+  }
+}
+
 .bottom-toolbar {
-  justify-content: center;
+  justify-content: space-between;
   border-top: 1px solid var(--border-color);
 }
 
 .whiteboard-name {
   flex: 0 0 auto;
+  min-width: 200px;
 }
 
 .utility-controls {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
-.color-picker {
+.color-picker, .tool-picker {
   display: flex;
   gap: 10px;
 }
@@ -48,6 +57,26 @@
 .color-btn.active {
   border-color: var(--accent-color);
   transform: scale(1.1);
+}
+
+/* Tool button styles */
+.tool-btn {
+  padding: 8px 16px;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.tool-btn:hover {
+  background-color: var(--border-color);
+}
+
+.tool-btn.active {
+  background-color: var(--accent-color);
+  color: white;
+  transform: scale(1.05);
 }
 
 /* Color button backgrounds */

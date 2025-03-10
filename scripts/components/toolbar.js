@@ -32,6 +32,14 @@ export class ToolbarComponent {
       });
     });
     
+    // Eraser tool
+    const eraserBtn = document.getElementById('eraser-btn');
+    if (eraserBtn) {
+      eraserBtn.addEventListener('click', () => {
+        this.handleEraserSelection();
+      });
+    }
+    
     // Whiteboard name input
     const nameInput = document.getElementById('whiteboard-name');
     if (nameInput) {
@@ -72,6 +80,14 @@ export class ToolbarComponent {
       });
     }
     
+    // Browse Files button
+    const browseFilesBtn = document.getElementById('browse-files-btn');
+    if (browseFilesBtn) {
+      browseFilesBtn.addEventListener('click', () => {
+        this.app.showFileBrowser();
+      });
+    }
+    
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       // Ctrl+Z for Undo
@@ -108,8 +124,46 @@ export class ToolbarComponent {
     // Add active class to the selected button
     selectedButton.classList.add('active');
     
+    // Deactivate eraser if it's active
+    const eraserBtn = document.getElementById('eraser-btn');
+    if (eraserBtn) {
+      eraserBtn.classList.remove('active');
+    }
+    
     // Set the current color in the app
     const color = selectedButton.getAttribute('data-color');
     this.app.setColor(color);
+  }
+  
+  /**
+   * Handle eraser selection
+   */
+  handleEraserSelection() {
+    const eraserBtn = document.getElementById('eraser-btn');
+    
+    // Toggle eraser state
+    if (this.app.currentTool === 'eraser') {
+      // Switch back to pen tool
+      this.app.setTool('pen');
+      eraserBtn.classList.remove('active');
+    } else {
+      // Switch to eraser tool
+      this.app.setTool('eraser');
+      eraserBtn.classList.add('active');
+    }
+  }
+  
+  /**
+   * Update the tool state based on the current tool
+   */
+  updateToolState() {
+    const eraserBtn = document.getElementById('eraser-btn');
+    if (eraserBtn) {
+      if (this.app.currentTool === 'eraser') {
+        eraserBtn.classList.add('active');
+      } else {
+        eraserBtn.classList.remove('active');
+      }
+    }
   }
 }

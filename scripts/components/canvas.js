@@ -109,9 +109,10 @@ export class CanvasComponent {
     // Create a new drawing command
     this.currentPath = {
       type: 'path',
+      tool: this.app.currentTool,
       color: this.app.currentColor,
       points: [{ x: this.lastX, y: this.lastY }],
-      lineWidth: this.ctx.lineWidth
+      lineWidth: this.app.currentTool === 'eraser' ? 20 : this.ctx.lineWidth // Wider for eraser
     };
   }
   
@@ -127,12 +128,28 @@ export class CanvasComponent {
     const currentX = e.clientX - rect.left;
     const currentY = e.clientY - rect.top;
     
-    // Draw the line
+    // Set up the context based on the current tool
     this.ctx.beginPath();
-    this.ctx.strokeStyle = this.app.currentColor;
+    
+    if (this.app.currentTool === 'eraser') {
+      // Set up for erasing
+      this.ctx.globalCompositeOperation = 'destination-out';
+      this.ctx.strokeStyle = 'rgba(0,0,0,1)'; // Fully opaque black for erasing
+      this.ctx.lineWidth = 20; // Wider line for eraser
+    } else {
+      // Set up for drawing
+      this.ctx.globalCompositeOperation = 'source-over';
+      this.ctx.strokeStyle = this.app.currentColor;
+      this.ctx.lineWidth = 2;
+    }
+    
+    // Draw the line
     this.ctx.moveTo(this.lastX, this.lastY);
     this.ctx.lineTo(currentX, currentY);
     this.ctx.stroke();
+    
+    // Reset composite operation
+    this.ctx.globalCompositeOperation = 'source-over';
     
     // Add the point to the current path
     this.currentPath.points.push({ x: currentX, y: currentY });
@@ -181,8 +198,18 @@ export class CanvasComponent {
     if (command.points.length < 2) return;
     
     this.ctx.beginPath();
-    this.ctx.strokeStyle = command.color;
-    this.ctx.lineWidth = command.lineWidth || 2;
+    
+    if (command.tool === 'eraser') {
+      // Set up for erasing
+      this.ctx.globalCompositeOperation = 'destination-out';
+      this.ctx.strokeStyle = 'rgba(0,0,0,1)';
+      this.ctx.lineWidth = command.lineWidth || 20;
+    } else {
+      // Set up for drawing
+      this.ctx.globalCompositeOperation = 'source-over';
+      this.ctx.strokeStyle = command.color;
+      this.ctx.lineWidth = command.lineWidth || 2;
+    }
     
     // Move to the first point
     this.ctx.moveTo(command.points[0].x, command.points[0].y);
@@ -193,6 +220,9 @@ export class CanvasComponent {
     }
     
     this.ctx.stroke();
+    
+    // Reset composite operation
+    this.ctx.globalCompositeOperation = 'source-over';
   }
   
   /**
@@ -215,6 +245,9 @@ export class CanvasComponent {
     // Convert each path in the drawing history to an SVG path
     for (const command of this.app.drawingHistory) {
       if (command.type === 'path' && command.points.length >= 2) {
+        // Skip eraser paths in SVG output - they're just for display
+        if (command.tool === 'eraser') continue;
+        
         svg += `<path d="`;
         
         // Start at the first point
