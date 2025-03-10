@@ -82,6 +82,7 @@
 - Created HTML, CSS, and JavaScript files for the application
 - Implemented drawing functionality with color selection
 - Created toolbar UI with color picker and utility buttons
+- Added MIT license to the project root
 
 ## Notes
 - The project has moved from planning to implementation phase

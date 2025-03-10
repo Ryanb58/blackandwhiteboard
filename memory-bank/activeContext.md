@@ -21,6 +21,7 @@ We have completed the initial setup phase and moved into the core implementation
   - Toolbar component for UI interactions (toolbar.js)
 - Implemented basic drawing functionality with color selection
 - Added placeholder functionality for save/export features
+- Added MIT license to the project root
 
 ## Next Steps
 
