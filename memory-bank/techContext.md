@@ -108,4 +108,6 @@ Used for:
 - **GitHub Pages**: The application is configured to be deployed on GitHub Pages
   - Build output is directed to the /docs folder
   - When pushed to the main branch, GitHub Pages will serve content from this folder
+  - All file paths use relative references (./path) instead of absolute paths (/path)
+  - Vite is configured with base: './' to ensure assets are correctly referenced
   - This provides a simple, free hosting solution for the static web application

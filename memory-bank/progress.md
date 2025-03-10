@@ -84,6 +84,7 @@
 - Created toolbar UI with color picker and utility buttons
 - Added MIT license to the project root
 - Configured Vite to build to the /docs folder for GitHub Pages hosting
+- Fixed file paths to use relative paths for GitHub Pages compatibility
 
 ## Notes
 - The project has moved from planning to implementation phase

@@ -6,6 +6,7 @@ export default defineConfig({
     outDir: 'docs',
     emptyOutDir: true,
   },
+  base: './', // Use relative paths
   resolve: {
     alias: {
       '@': resolve(__dirname, './scripts'),
