@@ -1,0 +1,76 @@
+/* Toolbar CSS for Black and White Board */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: var(--toolbar-height);
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+}
+
+.top-toolbar {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.bottom-toolbar {
+  justify-content: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.whiteboard-name {
+  flex: 0 0 auto;
+}
+
+.utility-controls {
+  display: flex;
+  align-items: center;
+}
+
+.color-picker {
+  display: flex;
+  gap: 10px;
+}
+
+.color-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+}
+
+.color-btn.active {
+  border-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Color button backgrounds */
+.color-btn[data-color="black"] {
+  background-color: #000000;
+}
+
+.color-btn[data-color="white"] {
+  background-color: #ffffff;
+}
+
+.color-btn[data-color="red"] {
+  background-color: #e74c3c;
+}
+
+.color-btn[data-color="green"] {
+  background-color: #2ecc71;
+}
+
+.color-btn[data-color="blue"] {
+  background-color: #3498db;
+}
+
+.color-btn[data-color="yellow"] {
+  background-color: #f1c40f;
+}

@@ -1,0 +1,84 @@
+# Cline Rules for Black and White Board Project
+
+## Project Patterns
+
+### Naming Conventions
+- **Files**: Use camelCase for JavaScript files (e.g., `drawingEngine.js`)
+- **CSS Classes**: Use kebab-case for CSS classes (e.g., `color-picker`)
+- **JavaScript Variables**: Use camelCase for variables and functions
+- **Constants**: Use UPPER_SNAKE_CASE for constants
+- **Components**: Use PascalCase for component classes if created
+
+### Code Style
+- Prefer ES6+ syntax (arrow functions, template literals, destructuring)
+- Use semicolons at the end of statements
+- Use single quotes for strings
+- Two-space indentation
+- Avoid unnecessary comments, write self-documenting code
+- Add JSDoc comments for functions with complex logic
+
+### Project Structure
+- Organize code by feature/component
+- Keep related files close to each other
+- Separate concerns (UI, drawing logic, storage)
+- Use index.js files for cleaner imports
+
+## Implementation Preferences
+
+### Drawing Implementation
+- Use requestAnimationFrame for smooth drawing
+- Store drawing history as commands for undo/redo
+- Implement tools as separate classes with a common interface
+- Use the Canvas API for drawing operations
+- Generate SVG paths from canvas drawing commands
+
+### UI Approach
+- Minimal UI that doesn't interfere with drawing
+- Tools at the bottom of the screen
+- Utility functions (undo, redo, save) at the top
+- Visual feedback for active tools/colors
+- Responsive design that works on various screen sizes
+
+### Storage Strategy
+- Use OPFS for local storage
+- Store drawings as SVG data
+- Implement auto-save functionality
+- Allow explicit saving with custom names
+- Provide export to local file system
+
+## Development Workflow
+
+### Build Process
+- Use Vite for development and building
+- Minimize external dependencies
+- Optimize for production builds
+
+### Testing
+- Manual testing across Chrome and Firefox
+- Focus on drawing performance and accuracy
+- Test storage persistence
+- Verify export functionality
+
+## User Experience Guidelines
+
+### Performance
+- Drawing should feel immediate and responsive
+- Optimize for smooth panning on large canvases
+- Minimize memory usage for large drawings
+- Efficient SVG generation
+
+### Accessibility
+- Ensure keyboard navigation for essential functions
+- Provide visual feedback for active states
+- Use appropriate contrast for UI elements
+- Consider color-blind users in the UI design
+
+## Project Evolution
+
+This file will be updated as we discover more patterns and preferences during development. Key areas to document include:
+
+- Discovered optimizations for drawing performance
+- Effective patterns for managing the infinite canvas
+- Best practices for SVG generation from canvas
+- Efficient approaches to OPFS storage
+- User preferences and workflow observations

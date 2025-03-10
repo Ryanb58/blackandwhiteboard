@@ -1,0 +1,33 @@
+/* Canvas CSS for Black and White Board */
+
+.canvas-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary-bg);
+  cursor: crosshair;
+}
+
+#drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* Prevents default touch actions like scrolling */
+}
+
+/* Add a subtle grid pattern to indicate it's a drawing canvas */
+.canvas-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none; /* Ensure it doesn't interfere with canvas interactions */
+}
