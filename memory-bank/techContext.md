@@ -46,7 +46,7 @@ blackandwhiteboard/
 
 ### Build and Run
 - Development: `npm run dev` - Starts Vite development server
-- Build: `npm run build` - Creates production build
+- Build: `npm run build` - Creates production build in the /docs folder for GitHub Pages
 - Preview: `npm run preview` - Previews production build locally
 
 ## Technical Constraints
@@ -103,3 +103,9 @@ Used for:
 - Focus on drawing performance and accuracy
 - Storage persistence verification
 - Export functionality validation
+
+## Deployment
+- **GitHub Pages**: The application is configured to be deployed on GitHub Pages
+  - Build output is directed to the /docs folder
+  - When pushed to the main branch, GitHub Pages will serve content from this folder
+  - This provides a simple, free hosting solution for the static web application

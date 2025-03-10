@@ -83,6 +83,7 @@
 - Implemented drawing functionality with color selection
 - Created toolbar UI with color picker and utility buttons
 - Added MIT license to the project root
+- Configured Vite to build to the /docs folder for GitHub Pages hosting
 
 ## Notes
 - The project has moved from planning to implementation phase

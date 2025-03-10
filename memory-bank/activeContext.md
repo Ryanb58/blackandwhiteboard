@@ -22,6 +22,8 @@ We have completed the initial setup phase and moved into the core implementation
 - Implemented basic drawing functionality with color selection
 - Added placeholder functionality for save/export features
 - Added MIT license to the project root
+- Created Vite configuration to output builds to the /docs folder for GitHub Pages hosting
+- Updated package.json license field to MIT
 
 ## Next Steps
 
